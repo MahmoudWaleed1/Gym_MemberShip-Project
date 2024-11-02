@@ -15,9 +15,9 @@ import java.util.ArrayList;
  */
 public class TrainerRole {
 
-   private MemberDatabase memberDatabase;
-    private ClassDatabase classDatabase;
-    private MemberClassRegistrationDatabase registrationDatabase;
+   public MemberDatabase memberDatabase;
+    public ClassDatabase classDatabase;
+    public MemberClassRegistrationDatabase registrationDatabase;
 
     public TrainerRole() throws FileNotFoundException {
         memberDatabase = new MemberDatabase(constants.FileNames.MEMBER_FILENAME);
