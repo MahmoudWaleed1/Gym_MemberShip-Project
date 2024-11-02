@@ -120,14 +120,14 @@ public class AdminRole extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addTrainersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTrainersActionPerformed
-
-        AddTrainer ad = new AddTrainer(admin);
+        this.setVisible(false);
+        AddTrainer ad = new AddTrainer(this);
         ad.setVisible(true);
     }//GEN-LAST:event_addTrainersActionPerformed
 
     private void removeTrainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeTrainerActionPerformed
-
-        RemoveTrainer ad = new RemoveTrainer(admin);
+        this.setVisible(false);
+        RemoveTrainer ad = new RemoveTrainer(this);
         ad.setVisible(true);
     }//GEN-LAST:event_removeTrainerActionPerformed
 
@@ -143,7 +143,8 @@ public class AdminRole extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutActionPerformed
 
     private void viewTrainersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTrainersActionPerformed
-        ViewTrainers ad = new ViewTrainers(admin);
+        this.setVisible(false);
+        ViewTrainers ad = new ViewTrainers(this);
         ad.setVisible(true);
     }//GEN-LAST:event_viewTrainersActionPerformed
 

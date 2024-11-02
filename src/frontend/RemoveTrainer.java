@@ -12,18 +12,18 @@ import javax.swing.JOptionPane;
  */
 public class RemoveTrainer extends javax.swing.JFrame {
 
-    private backend.AdminRole admin;
+    private frontend.AdminRole adminRole;
 
     /**
      * Creates new form AddTrainer
      *
      * @param admin
      */
-    public RemoveTrainer(backend.AdminRole admin) {
+    public RemoveTrainer(frontend.AdminRole admin) {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Remove trainer");
-        this.admin = admin;
+        this.adminRole = admin;
     }
 
     public RemoveTrainer() {
@@ -44,6 +44,11 @@ public class RemoveTrainer extends javax.swing.JFrame {
         remove = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setBackground(new java.awt.Color(0, 102, 102));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -100,21 +105,25 @@ public class RemoveTrainer extends javax.swing.JFrame {
     }//GEN-LAST:event_idActionPerformed
 
     private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
-
+        backend.AdminRole admin = adminRole.admin;
         if (id.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "ID is empty. Enter a valid ID!", "Error", JOptionPane.ERROR_MESSAGE);
         } else if (admin.database.contains(id.getText())) {
 
             admin.removeTrainer(id.getText());
             JOptionPane.showMessageDialog(rootPane, "The trainer with ID = " + id.getText() + " has been deleted");
-
             dispose();
+            adminRole.setVisible(true);
 
         } else {
             JOptionPane.showMessageDialog(rootPane, "The trainer with ID = " + id.getText() + " does not exist!", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_removeActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        adminRole.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

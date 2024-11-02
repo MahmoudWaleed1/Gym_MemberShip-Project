@@ -12,18 +12,18 @@ import javax.swing.JOptionPane;
  */
 public class AddTrainer extends javax.swing.JFrame {
 
-    private backend.AdminRole admin;
+    private frontend.AdminRole adminRole;
 
     /**
      * Creates new form AddTrainer
      *
      * @param admin
      */
-    public AddTrainer(backend.AdminRole admin) {
+    public AddTrainer(frontend.AdminRole admin) {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Add trainer");
-        this.admin = admin;
+        this.adminRole = admin;
     }
 
     public AddTrainer() {
@@ -52,6 +52,11 @@ public class AddTrainer extends javax.swing.JFrame {
         add = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -213,7 +218,7 @@ public class AddTrainer extends javax.swing.JFrame {
         if (checkEmptyBoxes()) {
             JOptionPane.showMessageDialog(rootPane, "Some fields are empty!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-
+            backend.AdminRole admin = adminRole.admin;
             String idString = id.getText();
             if (admin.database.contains(idString)) {
                 JOptionPane.showMessageDialog(rootPane, "The trainer with ID = " + idString + " already exists!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -225,15 +230,18 @@ public class AddTrainer extends javax.swing.JFrame {
                 admin.addTrainer(idString, nameString, emailString, specialityString, phoneString);
                 JOptionPane.showMessageDialog(rootPane, "The trainer with ID = " + idString + " has successfully added!");
                 dispose();
-            }
-
+                adminRole.setVisible(true);
+            } 
         }
-
+        
     }//GEN-LAST:event_addActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        adminRole.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
     private boolean checkEmptyBoxes() {
         return id.getText().equals("") || jLabel2.getText().equals("") || email.getText().equals("") || speciality.getText().equals("") || phoneNumber.getText().equals("");
     }
-
     /**
      * @param args the command line arguments
      */

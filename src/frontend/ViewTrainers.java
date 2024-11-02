@@ -14,18 +14,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ViewTrainers extends javax.swing.JFrame {
 
-    private backend.AdminRole admin;
+   private frontend.AdminRole adminRole;
 
     /**
      * Creates new form AddTrainer
      *
      * @param admin
      */
-    public ViewTrainers(backend.AdminRole admin) {
+    public ViewTrainers(frontend.AdminRole admin) {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("View trainers");
-        this.admin = admin;
+        this.adminRole = admin;
         addData();
     }
 
@@ -49,6 +49,11 @@ public class ViewTrainers extends javax.swing.JFrame {
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
             }
         });
 
@@ -82,11 +87,11 @@ public class ViewTrainers extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
         );
 
         pack();
@@ -100,7 +105,12 @@ public class ViewTrainers extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_formComponentShown
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        adminRole.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
+
     private void addData() {
+        backend.AdminRole admin = adminRole.admin;
         ArrayList<Trainer> trainers = admin.getListOfTrainers();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
