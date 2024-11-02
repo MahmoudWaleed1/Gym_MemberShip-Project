@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package backend;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 /**
  *
@@ -14,7 +15,6 @@ public class ClassDatabase extends Database{
     
     public ClassDatabase(String fileName){
         super(fileName);
-        records = new ArrayList<>();
     }
     
     

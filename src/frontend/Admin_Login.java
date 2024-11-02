@@ -4,6 +4,12 @@
  */
 package frontend;
 
+import constants.LoginCredentials;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Mahmoud Waleed
@@ -15,6 +21,7 @@ public class Admin_Login extends javax.swing.JFrame {
      */
     public Admin_Login() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -111,12 +118,27 @@ public class Admin_Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        if(usernamePassVerification()){
+            try {
+                dispose();
+                AdminRole ad = new AdminRole();
+                ad.setVisible(true);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Admin_Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Wrong username or password", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    
+    public boolean usernamePassVerification() {
+           return  LoginCredentials.ADMIN_USERNAME.equals(jTextField1.getText()) && LoginCredentials.ADMIN_PASSWORD.equals(jTextField2.getText());
+    }
 
     /**
      * @param args the command line arguments
@@ -147,6 +169,7 @@ public class Admin_Login extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Admin_Login().setVisible(true);
             }

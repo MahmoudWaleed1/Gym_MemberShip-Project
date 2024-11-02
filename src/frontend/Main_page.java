@@ -13,11 +13,10 @@ import java.awt.event.WindowEvent;
  */
 public class Main_page extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Main_page
-     */
     public Main_page() {
         initComponents();
+        setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -89,17 +88,13 @@ public class Main_page extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void close(){
-            WindowEvent closeW = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
-            Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeW);
-    }
     private void trainerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trainerButtonActionPerformed
        
        
     }//GEN-LAST:event_trainerButtonActionPerformed
 
     private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
-        close();
+        dispose();
         Admin_Login ad = new Admin_Login();
         ad.setVisible(true);
     }//GEN-LAST:event_adminButtonActionPerformed
@@ -133,6 +128,7 @@ public class Main_page extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Main_page().setVisible(true);
             }

@@ -20,9 +20,9 @@ public class TrainerRole {
     private MemberClassRegistrationDatabase registrationDatabase;
 
     public TrainerRole() throws FileNotFoundException {
-        memberDatabase = new MemberDatabase("Members.txt");
-        classDatabase = new ClassDatabase("Class.txt");
-        registrationDatabase = new MemberClassRegistrationDatabase("Registration.txt");
+        memberDatabase = new MemberDatabase(constants.FileNames.MEMBER_FILENAME);
+        classDatabase = new ClassDatabase(constants.FileNames.CLASS_FILENAME);
+        registrationDatabase = new MemberClassRegistrationDatabase(constants.FileNames.REGISTRATION_FILENAME);
         memberDatabase.readFromFile();
         classDatabase.readFromFile();
         registrationDatabase.readFromFile();

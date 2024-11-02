@@ -14,10 +14,10 @@ import java.util.ArrayList;
  * @author DELL
  */
 public class AdminRole {
-     private TrainerDatabase database;
+    public TrainerDatabase database;
 
     public AdminRole() throws FileNotFoundException {
-        database = new TrainerDatabase("Trainers.txt");
+        database = new TrainerDatabase(constants.FileNames.TRAINER_FILENAME);
         database.readFromFile();
     }
     

@@ -23,12 +23,13 @@ public class MemberClassRegistrationDatabase extends Database{
 
     public MemberClassRegistrationDatabase(String fileName) {
         super(fileName);
-        records = new ArrayList<>();
+        
     }
 
    
  
 
+    @Override
     public MemberClassRegistration createRecordFrom(String line) {
         String[] lineSeperate = line.split(",");
         String memberID = lineSeperate[0];
