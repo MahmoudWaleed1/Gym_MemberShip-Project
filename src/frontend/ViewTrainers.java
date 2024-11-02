@@ -14,18 +14,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ViewTrainers extends javax.swing.JFrame {
 
-    private backend.AdminRole admin;
+    private frontend.AdminRole adminRole;
 
     /**
      * Creates new form AddTrainer
      *
      * @param admin
      */
-    public ViewTrainers(backend.AdminRole admin) {
+    public ViewTrainers(frontend.AdminRole admin) {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("View trainers");
-        this.admin = admin;
+        this.adminRole = admin;
         addData();
     }
 
@@ -101,6 +101,7 @@ public class ViewTrainers extends javax.swing.JFrame {
     }//GEN-LAST:event_formComponentShown
 
     private void addData() {
+        backend.AdminRole admin = adminRole.admin;
         ArrayList<Trainer> trainers = admin.getListOfTrainers();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);

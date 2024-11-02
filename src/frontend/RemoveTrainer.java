@@ -12,18 +12,18 @@ import javax.swing.JOptionPane;
  */
 public class RemoveTrainer extends javax.swing.JFrame {
 
-    private backend.AdminRole admin;
+    private frontend.AdminRole adminRole;
 
     /**
      * Creates new form AddTrainer
      *
      * @param admin
      */
-    public RemoveTrainer(backend.AdminRole admin) {
+     public RemoveTrainer(frontend.AdminRole admin) {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Remove trainer");
-        this.admin = admin;
+        this.adminRole = admin;
     }
 
     public RemoveTrainer() {
@@ -101,14 +101,15 @@ public class RemoveTrainer extends javax.swing.JFrame {
 
     private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
 
+        backend.AdminRole admin = adminRole.admin;
         if (id.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "ID is empty. Enter a valid ID!", "Error", JOptionPane.ERROR_MESSAGE);
         } else if (admin.database.contains(id.getText())) {
 
             admin.removeTrainer(id.getText());
             JOptionPane.showMessageDialog(rootPane, "The trainer with ID = " + id.getText() + " has been deleted");
-
             dispose();
+            adminRole.setVisible(true);
 
         } else {
             JOptionPane.showMessageDialog(rootPane, "The trainer with ID = " + id.getText() + " does not exist!", "Error", JOptionPane.ERROR_MESSAGE);
