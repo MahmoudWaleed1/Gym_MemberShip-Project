@@ -4,6 +4,8 @@
  */
 package frontend;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Mahmoud Waleed
@@ -195,24 +197,29 @@ public class AddClass extends javax.swing.JFrame {
     }//GEN-LAST:event_durationActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        if (checkEmptyBoxes()) {
+      if (checkEmptyBoxes()) {
             JOptionPane.showMessageDialog(rootPane, "Some fields are empty!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            backend.AdminRole admin = adminRole.admin;
-            String idString = classID.getText();
-            if (admin.database.contains(idString)) {
-                JOptionPane.showMessageDialog(rootPane, "The trainer with ID = " + idString + " already exists!", "Error", JOptionPane.ERROR_MESSAGE);
+            backend.TrainerRole trainer = trainerRole.trainer;
+            String classIDString = classID.getText();
+            if (trainer.memberDatabase.contains(classIDString)) {
+                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + classID + " already exists!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                String nameString = className.getText();
-                String emailString = trainerID.getText();
-                String specialityString = duration.getText();
-                String phoneString = maxParticipants.getText();
-                admin.addTrainer(idString, nameString, emailString, specialityString, phoneString);
-                JOptionPane.showMessageDialog(rootPane, "The trainer with ID = " + idString + " has successfully added!");
+                String classNameString = className.getText();
+                String trainerIDSting = trainerID.getText();
+                String memberShipType = memberShip.getText();
+                String phoneString = phoneNumber.getText();
+                String statusString = status.getText();
+                trainer.addMember(idString, nameString, memberShipType, emailString, phoneString, statusString);
+                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + idString + " has successfully added!");
                 dispose();
-                adminRole.setVisible(true);
-            }
-        }
+                trainerRole.setVisible(true);
+            } 
+       }
+}
+       private boolean checkEmptyBoxes() {
+        return classID.getText().equals("") || className.getText().equals("") || trainerID.getText().equals("") || duration.getText().equals("") || maxParticipants.getText().equals("") ;
+    }
 
     }//GEN-LAST:event_addActionPerformed
 
