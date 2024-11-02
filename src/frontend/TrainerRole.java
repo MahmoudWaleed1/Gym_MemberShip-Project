@@ -190,8 +190,8 @@ public class TrainerRole extends javax.swing.JFrame {
     private void viewMembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewMembersActionPerformed
 
         dispose();
-        RemoveTrainer ad = new RemoveTrainer(admin);
-        ad.setVisible(true);
+        viewMembers vm = new viewMembers(this);
+        vm.setVisible(true);
     }//GEN-LAST:event_viewMembersActionPerformed
 
     private void addClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClassActionPerformed

@@ -4,6 +4,7 @@
  */
 package frontend;
 
+import backend.General;
 import backend.Member;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -96,10 +97,10 @@ public class viewMembers extends javax.swing.JFrame {
     
     private void addData() {
         backend.TrainerRole trainer = trainerRole.trainer;
-        ArrayList<Member> members = trainer.getListOfMembers();
+        ArrayList<General> members = trainer.getListOfMembers();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-        for (Member m : members) {
+        for (var m : members) {
             String[] s = m.lineRepresentation().split(",");
             Object[] row = {s[0], s[1], s[2], s[3], s[4]};
             model.addRow(row);
