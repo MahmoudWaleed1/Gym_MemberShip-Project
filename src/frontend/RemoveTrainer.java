@@ -19,7 +19,8 @@ public class RemoveTrainer extends javax.swing.JFrame {
      *
      * @param admin
      */
-    public RemoveTrainer(frontend.AdminRole admin) {
+     public RemoveTrainer(frontend.AdminRole admin) {
+
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Remove trainer");
@@ -44,6 +45,7 @@ public class RemoveTrainer extends javax.swing.JFrame {
         remove = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAutoRequestFocus(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -105,6 +107,7 @@ public class RemoveTrainer extends javax.swing.JFrame {
     }//GEN-LAST:event_idActionPerformed
 
     private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
+
         backend.AdminRole admin = adminRole.admin;
         if (id.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "ID is empty. Enter a valid ID!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -153,11 +156,8 @@ public class RemoveTrainer extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new RemoveTrainer().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new RemoveTrainer().setVisible(true);
         });
     }
 
