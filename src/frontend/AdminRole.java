@@ -44,7 +44,6 @@ public class AdminRole extends javax.swing.JFrame {
         logout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setAutoRequestFocus(false);
 
         addTrainers.setBackground(new java.awt.Color(0, 0, 0));
         addTrainers.setForeground(new java.awt.Color(255, 255, 255));

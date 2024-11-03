@@ -5,10 +5,7 @@
 package frontend;
 
 import backend.General;
-<<<<<<< HEAD
-=======
-import backend.Member;
->>>>>>> ddb50c90c8046654d21daeb9c57abd6517d71886
+
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -104,11 +101,7 @@ public class viewMembers extends javax.swing.JFrame {
         ArrayList<General> members = trainer.getListOfMembers();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-<<<<<<< HEAD
-        for (General m : members) {
-=======
-        for (var m : members) {
->>>>>>> ddb50c90c8046654d21daeb9c57abd6517d71886
+    for (var m : members) {
             String[] s = m.lineRepresentation().split(",");
             Object[] row = {s[0], s[1], s[2], s[3], s[4]};
             model.addRow(row);
@@ -140,12 +133,12 @@ public class viewMembers extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new viewMembers().setVisible(true);
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
