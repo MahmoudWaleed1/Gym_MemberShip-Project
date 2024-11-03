@@ -85,7 +85,7 @@ public class Main_page extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void trainerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trainerButtonActionPerformed
-       dispose();
+        dispose();
         Trainer_login ad = new Trainer_login();
         ad.setVisible(true);
        

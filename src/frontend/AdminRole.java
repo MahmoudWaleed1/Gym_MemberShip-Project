@@ -42,10 +42,11 @@ public class AdminRole extends javax.swing.JFrame {
         removeTrainer = new javax.swing.JButton();
         viewTrainers = new javax.swing.JButton();
         logout = new javax.swing.JButton();
+        back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        addTrainers.setBackground(new java.awt.Color(0, 0, 0));
+        addTrainers.setBackground(new java.awt.Color(0, 102, 102));
         addTrainers.setForeground(new java.awt.Color(255, 255, 255));
         addTrainers.setText("Add trainers");
         addTrainers.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.darkGray));
@@ -57,9 +58,9 @@ public class AdminRole extends javax.swing.JFrame {
             }
         });
 
-        removeTrainer.setBackground(new java.awt.Color(0, 0, 0));
+        removeTrainer.setBackground(new java.awt.Color(0, 102, 102));
         removeTrainer.setForeground(new java.awt.Color(255, 255, 255));
-        removeTrainer.setText("Renove trainer");
+        removeTrainer.setText("Remove trainer");
         removeTrainer.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray));
         removeTrainer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         removeTrainer.addActionListener(new java.awt.event.ActionListener() {
@@ -68,7 +69,7 @@ public class AdminRole extends javax.swing.JFrame {
             }
         });
 
-        viewTrainers.setBackground(new java.awt.Color(0, 0, 0));
+        viewTrainers.setBackground(new java.awt.Color(0, 102, 102));
         viewTrainers.setForeground(new java.awt.Color(255, 255, 255));
         viewTrainers.setText("View trainers");
         viewTrainers.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray));
@@ -79,7 +80,7 @@ public class AdminRole extends javax.swing.JFrame {
             }
         });
 
-        logout.setBackground(new java.awt.Color(0, 0, 0));
+        logout.setBackground(new java.awt.Color(102, 0, 0));
         logout.setForeground(new java.awt.Color(255, 255, 255));
         logout.setText("LogOut");
         logout.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray));
@@ -90,31 +91,50 @@ public class AdminRole extends javax.swing.JFrame {
             }
         });
 
+        back.setBackground(new java.awt.Color(0, 0, 0));
+        back.setForeground(new java.awt.Color(255, 255, 255));
+        back.setText("Back");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(logout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(viewTrainers, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
-                    .addComponent(removeTrainer, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
-                    .addComponent(addTrainers, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(removeTrainer, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(back)
+                        .addGap(23, 23, 23)
+                        .addComponent(viewTrainers, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addTrainers, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(110, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(40, 40, 40)
                 .addComponent(addTrainers, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(removeTrainer, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(viewTrainers, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(viewTrainers, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(back)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -149,6 +169,12 @@ public class AdminRole extends javax.swing.JFrame {
         ad.setVisible(true);
     }//GEN-LAST:event_viewTrainersActionPerformed
 
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        dispose();
+        Admin_Login m = new Admin_Login();
+        m.setVisible(true);
+    }//GEN-LAST:event_backActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -173,6 +199,7 @@ public class AdminRole extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addTrainers;
+    private javax.swing.JButton back;
     private javax.swing.JButton logout;
     private javax.swing.JButton removeTrainer;
     private javax.swing.JButton viewTrainers;

@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Mahmoud Waleed
@@ -20,6 +21,7 @@ public class Trainer_login extends javax.swing.JFrame {
      */
     public Trainer_login() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -36,9 +38,21 @@ public class Trainer_login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         UserNameInput = new javax.swing.JTextField();
         PasswordInput = new javax.swing.JTextField();
+        back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trainer Login");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+            public void windowDeactivated(java.awt.event.WindowEvent evt) {
+                formWindowDeactivated(evt);
+            }
+        });
 
         Login.setBackground(new java.awt.Color(51, 51, 51));
         Login.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -69,14 +83,26 @@ public class Trainer_login extends javax.swing.JFrame {
             }
         });
 
+        back.setBackground(new java.awt.Color(0, 0, 0));
+        back.setForeground(new java.awt.Color(255, 255, 255));
+        back.setText("Back");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(back)
+                .addContainerGap(324, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 17, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -89,14 +115,17 @@ public class Trainer_login extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(117, 117, 117)
                             .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 17, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(back)
+                .addContainerGap(275, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 47, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
@@ -110,7 +139,7 @@ public class Trainer_login extends javax.swing.JFrame {
                             .addComponent(PasswordInput, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(39, 39, 39)
                     .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 48, Short.MAX_VALUE)))
         );
 
         UserNameInput.getAccessibleContext().setAccessibleName("UserNameInput");
@@ -119,7 +148,7 @@ public class Trainer_login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
-   if(usernamePassVerification()){
+        if (usernamePassVerification()) {
             try {
                 dispose();
                 TrainerRole tr = new TrainerRole();
@@ -127,18 +156,39 @@ public class Trainer_login extends javax.swing.JFrame {
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Trainer_login.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(rootPane, "Wrong username or password", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_LoginActionPerformed
-
+ 
+    
     private void PasswordInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordInputActionPerformed
-public boolean usernamePassVerification() {
-           return  LoginCredentials.TRAINER_USERNAME.equals(UserNameInput.getText()) && LoginCredentials.TRAINER_PASSWORD.equals(PasswordInput.getText());
-}/**
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+
+    }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowDeactivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowDeactivated
+
+    }//GEN-LAST:event_formWindowDeactivated
+
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        dispose();
+        Main_page m = new Main_page();
+        m.setVisible(true);
+    }//GEN-LAST:event_backActionPerformed
+    public boolean usernamePassVerification() {
+        return LoginCredentials.TRAINER_USERNAME.equals(UserNameInput.getText()) && LoginCredentials.TRAINER_PASSWORD.equals(PasswordInput.getText());
+    }
+
+    /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -177,6 +227,7 @@ public boolean usernamePassVerification() {
     private javax.swing.JButton Login;
     private javax.swing.JTextField PasswordInput;
     private javax.swing.JTextField UserNameInput;
+    private javax.swing.JButton back;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

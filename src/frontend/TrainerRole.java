@@ -14,9 +14,12 @@ import java.util.logging.Logger;
  * @author Mahmoud Waleed
  */
 public class TrainerRole extends javax.swing.JFrame {
-         backend.TrainerRole trainer;
+
+    backend.TrainerRole trainer;
+
     /**
      * Creates new form TrainerRole
+     *
      * @throws java.io.FileNotFoundException
      */
     public TrainerRole() throws FileNotFoundException {
@@ -40,13 +43,14 @@ public class TrainerRole extends javax.swing.JFrame {
         addClass = new javax.swing.JButton();
         viewClass = new javax.swing.JButton();
         registerMember = new javax.swing.JButton();
-        classRegistration = new javax.swing.JButton();
+        cancelRegistration = new javax.swing.JButton();
         viewRegistrations = new javax.swing.JButton();
         logout = new javax.swing.JButton();
+        back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        addMembers.setBackground(new java.awt.Color(0, 0, 0));
+        addMembers.setBackground(new java.awt.Color(0, 51, 51));
         addMembers.setForeground(new java.awt.Color(255, 255, 255));
         addMembers.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.darkGray));
         addMembers.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -57,7 +61,7 @@ public class TrainerRole extends javax.swing.JFrame {
             }
         });
 
-        viewMembers.setBackground(new java.awt.Color(0, 0, 0));
+        viewMembers.setBackground(new java.awt.Color(0, 51, 51));
         viewMembers.setForeground(new java.awt.Color(255, 255, 255));
         viewMembers.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray));
         viewMembers.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -68,7 +72,7 @@ public class TrainerRole extends javax.swing.JFrame {
             }
         });
 
-        addClass.setBackground(new java.awt.Color(0, 0, 0));
+        addClass.setBackground(new java.awt.Color(0, 51, 51));
         addClass.setForeground(new java.awt.Color(255, 255, 255));
         addClass.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray));
         addClass.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -79,7 +83,7 @@ public class TrainerRole extends javax.swing.JFrame {
             }
         });
 
-        viewClass.setBackground(new java.awt.Color(0, 0, 0));
+        viewClass.setBackground(new java.awt.Color(0, 51, 51));
         viewClass.setForeground(new java.awt.Color(255, 255, 255));
         viewClass.setActionCommand("View Classes");
         viewClass.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray));
@@ -91,7 +95,7 @@ public class TrainerRole extends javax.swing.JFrame {
             }
         });
 
-        registerMember.setBackground(new java.awt.Color(0, 0, 0));
+        registerMember.setBackground(new java.awt.Color(51, 51, 51));
         registerMember.setForeground(new java.awt.Color(255, 255, 255));
         registerMember.setActionCommand("View Classes");
         registerMember.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray));
@@ -103,19 +107,19 @@ public class TrainerRole extends javax.swing.JFrame {
             }
         });
 
-        classRegistration.setBackground(new java.awt.Color(0, 0, 0));
-        classRegistration.setForeground(new java.awt.Color(255, 255, 255));
-        classRegistration.setActionCommand("View Classes");
-        classRegistration.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray));
-        classRegistration.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        classRegistration.setLabel("Cancel Registration");
-        classRegistration.addActionListener(new java.awt.event.ActionListener() {
+        cancelRegistration.setBackground(new java.awt.Color(51, 51, 51));
+        cancelRegistration.setForeground(new java.awt.Color(255, 255, 255));
+        cancelRegistration.setActionCommand("View Classes");
+        cancelRegistration.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray));
+        cancelRegistration.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        cancelRegistration.setLabel("Cancel Registration");
+        cancelRegistration.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                classRegistrationActionPerformed(evt);
+                cancelRegistrationActionPerformed(evt);
             }
         });
 
-        viewRegistrations.setBackground(new java.awt.Color(0, 0, 0));
+        viewRegistrations.setBackground(new java.awt.Color(51, 51, 51));
         viewRegistrations.setForeground(new java.awt.Color(255, 255, 255));
         viewRegistrations.setActionCommand("View Classes");
         viewRegistrations.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray));
@@ -127,7 +131,7 @@ public class TrainerRole extends javax.swing.JFrame {
             }
         });
 
-        logout.setBackground(new java.awt.Color(0, 0, 0));
+        logout.setBackground(new java.awt.Color(153, 0, 0));
         logout.setForeground(new java.awt.Color(255, 255, 255));
         logout.setText("Logout");
         logout.setActionCommand("View Classes");
@@ -139,44 +143,65 @@ public class TrainerRole extends javax.swing.JFrame {
             }
         });
 
+        back.setBackground(new java.awt.Color(0, 0, 0));
+        back.setForeground(new java.awt.Color(255, 255, 255));
+        back.setText("Back");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(135, 135, 135)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(viewRegistrations, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(classRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(registerMember, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(viewClass, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(viewMembers, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                        .addComponent(addMembers, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(addClass, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(113, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(122, 122, 122)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(registerMember, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cancelRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(viewRegistrations, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(addMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                                .addComponent(addClass, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(viewMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(viewClass, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(back)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(104, 104, 104)
+                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(addMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(viewMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(addClass, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(viewClass, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(19, 19, 19)
+                .addComponent(back)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addClass, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(viewMembers, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(viewClass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addComponent(registerMember, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(classRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cancelRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(viewRegistrations, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
 
         pack();
@@ -185,28 +210,50 @@ public class TrainerRole extends javax.swing.JFrame {
     private void addMembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMembersActionPerformed
 
         dispose();
-        AddMember am = new AddMember();
+        AddMember am = new AddMember(this);
         am.setVisible(true);
     }//GEN-LAST:event_addMembersActionPerformed
 
     private void viewMembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewMembersActionPerformed
 
         dispose();
-
-        //RemoveTrainer ad = new RemoveTrainer(this);
-        //ad.setVisible(true);
-
         viewMembers vm = new viewMembers(this);
         vm.setVisible(true);
 
     }//GEN-LAST:event_viewMembersActionPerformed
 
     private void addClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClassActionPerformed
-        //ViewTrainers ad = new ViewTrainers(this);
-        //ad.setVisible(true);
+        dispose();
+        AddClass ac = new AddClass(this);
+        ac.setVisible(true);
     }//GEN-LAST:event_addClassActionPerformed
 
+
     private void viewClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewClassActionPerformed
+        dispose();
+        viewClass vc = new viewClass(this);
+        vc.setVisible(true);
+    }//GEN-LAST:event_viewClassActionPerformed
+
+    private void registerMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerMemberActionPerformed
+        dispose();
+        registerMember rm = new registerMember(this);
+        rm.setVisible(true);
+    }//GEN-LAST:event_registerMemberActionPerformed
+
+    private void cancelRegistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelRegistrationActionPerformed
+        dispose();
+        cancelRegistration cr = new cancelRegistration(this);
+        cr.setVisible(true);
+    }//GEN-LAST:event_cancelRegistrationActionPerformed
+
+    private void viewRegistrationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRegistrationsActionPerformed
+        dispose();
+        viewRegistrations vr = new viewRegistrations(this);
+        vr.setVisible(true);
+    }//GEN-LAST:event_viewRegistrationsActionPerformed
+
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
         try {
             trainer.logout();
             dispose();
@@ -214,24 +261,14 @@ public class TrainerRole extends javax.swing.JFrame {
             m.setVisible(true);
         } catch (IOException ex) {
             Logger.getLogger(AdminRole.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_viewClassActionPerformed
-
-    private void registerMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerMemberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_registerMemberActionPerformed
-
-    private void classRegistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classRegistrationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_classRegistrationActionPerformed
-
-    private void viewRegistrationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRegistrationsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewRegistrationsActionPerformed
-
-    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_logoutActionPerformed
+    }
+
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {
+        dispose();
+        Trainer_login m = new Trainer_login();
+        m.setVisible(true);
+    }
 
     /**
      * @param args the command line arguments
@@ -278,7 +315,8 @@ public class TrainerRole extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addClass;
     private javax.swing.JButton addMembers;
-    private javax.swing.JButton classRegistration;
+    private javax.swing.JButton back;
+    private javax.swing.JButton cancelRegistration;
     private javax.swing.JButton logout;
     private javax.swing.JButton registerMember;
     private javax.swing.JButton viewClass;

@@ -253,6 +253,10 @@ public class AddMember extends javax.swing.JFrame {
      private boolean checkEmptyBoxes() {
         return id.getText().equals("") || name.getText().equals("") || email.getText().equals("") || memberShip.getText().equals("") || phoneNumber.getText().equals("") || status.getText().equals("");
     }
+     
+     private void formWindowClosed(java.awt.event.WindowEvent evt) {
+        trainerRole.setVisible(true);
+    }  
     /**
      * @param args the command line arguments
      */

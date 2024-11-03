@@ -14,3 +14,4 @@
 0,s,s,s,s
 444,ss,s,sw,w
 123,k,k,k,k
+81,h,h,h,h
