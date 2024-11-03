@@ -45,6 +45,11 @@ public class AdminRole extends javax.swing.JFrame {
         back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         addTrainers.setBackground(new java.awt.Color(0, 102, 102));
         addTrainers.setForeground(new java.awt.Color(255, 255, 255));
@@ -174,6 +179,10 @@ public class AdminRole extends javax.swing.JFrame {
         Admin_Login m = new Admin_Login();
         m.setVisible(true);
     }//GEN-LAST:event_backActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

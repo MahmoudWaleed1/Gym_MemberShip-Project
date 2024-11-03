@@ -41,7 +41,7 @@ public class Admin_Login extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         back = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setBackground(new java.awt.Color(51, 51, 51));
         jButton1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N

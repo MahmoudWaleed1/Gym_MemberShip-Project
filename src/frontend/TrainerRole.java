@@ -146,6 +146,11 @@ public class TrainerRole extends javax.swing.JFrame {
         back.setBackground(new java.awt.Color(0, 0, 0));
         back.setForeground(new java.awt.Color(255, 255, 255));
         back.setText("Back");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -209,46 +214,46 @@ public class TrainerRole extends javax.swing.JFrame {
 
     private void addMembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMembersActionPerformed
 
-        dispose();
+        this.setVisible(false);
         AddMember am = new AddMember(this);
         am.setVisible(true);
     }//GEN-LAST:event_addMembersActionPerformed
 
     private void viewMembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewMembersActionPerformed
 
-        dispose();
+        this.setVisible(false);
         viewMembers vm = new viewMembers(this);
         vm.setVisible(true);
 
     }//GEN-LAST:event_viewMembersActionPerformed
 
     private void addClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClassActionPerformed
-        dispose();
+        this.setVisible(false);
         AddClass ac = new AddClass(this);
         ac.setVisible(true);
     }//GEN-LAST:event_addClassActionPerformed
 
 
     private void viewClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewClassActionPerformed
-        dispose();
+        this.setVisible(false);
         viewClass vc = new viewClass(this);
         vc.setVisible(true);
     }//GEN-LAST:event_viewClassActionPerformed
 
     private void registerMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerMemberActionPerformed
-        dispose();
+        this.setVisible(false);
         registerMember rm = new registerMember(this);
         rm.setVisible(true);
     }//GEN-LAST:event_registerMemberActionPerformed
 
     private void cancelRegistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelRegistrationActionPerformed
-        dispose();
+        this.setVisible(false);
         cancelRegistration cr = new cancelRegistration(this);
         cr.setVisible(true);
     }//GEN-LAST:event_cancelRegistrationActionPerformed
 
     private void viewRegistrationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRegistrationsActionPerformed
-        dispose();
+        this.setVisible(false);
         viewRegistrations vr = new viewRegistrations(this);
         vr.setVisible(true);
     }//GEN-LAST:event_viewRegistrationsActionPerformed
@@ -263,12 +268,14 @@ public class TrainerRole extends javax.swing.JFrame {
             Logger.getLogger(AdminRole.class.getName()).log(Level.SEVERE, null, ex);
     }//GEN-LAST:event_logoutActionPerformed
     }
-
-    private void backActionPerformed(java.awt.event.ActionEvent evt) {
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         dispose();
         Trainer_login m = new Trainer_login();
         m.setVisible(true);
-    }
+    }//GEN-LAST:event_backActionPerformed
+
+
+
 
     /**
      * @param args the command line arguments

@@ -12,18 +12,21 @@ import javax.swing.JOptionPane;
  * @author Mahmoud Waleed
  */
 public class registerMember extends javax.swing.JFrame {
+    
     private frontend.TrainerRole trainerRole;
+
     /**
      * Creates new form registerMember
+     *
      * @param trainer
      */
-    
-     public registerMember(frontend.TrainerRole trainer) {
+    public registerMember(frontend.TrainerRole trainer) {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Register member");
         this.trainerRole = trainer;
     }
+    
     public registerMember() {
         initComponents();
     }
@@ -46,7 +49,7 @@ public class registerMember extends javax.swing.JFrame {
         currentDate = new javax.swing.JButton();
         dateInput = new com.toedter.calendar.JDateChooser();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -154,26 +157,32 @@ public class registerMember extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
-          if (checkEmptyBoxes()) {
+        if (checkEmptyBoxes()) {
             JOptionPane.showMessageDialog(rootPane, "Some fields are empty!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             backend.TrainerRole trainer = trainerRole.trainer;
             String classIDString = classIDInput.getText();
-            if (trainer.classDatabase.getRecord(classIDString).getAvailableSeats()<0) {
+            String memberIDString = MemberIDInput.getText();
+            if (!trainer.classDatabase.contains(classIDString)) {
+                JOptionPane.showMessageDialog(rootPane, "The class with ID = " + classIDString + " does not exist", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (!trainer.memberDatabase.contains(memberIDString)) {
+                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " does not exist", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (trainer.classDatabase.getRecord(classIDString).getAvailableSeats() < 0) {
                 JOptionPane.showMessageDialog(rootPane, "No available seats!", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (trainer.registrationDatabase.contains(classIDString + '-' + memberIDString)) {
+                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " has already registred to class " + classIDString + "!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                String memberIDString = MemberIDInput.getText();
-                String date  = dateInput.getDateFormatString();
+                String date = dateInput.getDateFormatString();
                 trainer.registerMemberForClass(memberIDString, classIDString, LocalDate.parse(date));
-                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " has successfully registred to class "+ classIDString);
+                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " has successfully registred to class " + classIDString);
                 dispose();
                 trainerRole.setVisible(true);
-            } 
+            }
         }
 
     }//GEN-LAST:event_RegisterActionPerformed
-
     
+
     private void classIDInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classIDInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_classIDInputActionPerformed
@@ -190,8 +199,9 @@ public class registerMember extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     private boolean checkEmptyBoxes() {
-        return classIDInput.getText().equals("") || MemberIDInput.getText().equals("") || dateInput.getDateFormatString().equals("") ;
+        return classIDInput.getText().equals("") || MemberIDInput.getText().equals("") || dateInput.getDateFormatString().equals("");
     }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

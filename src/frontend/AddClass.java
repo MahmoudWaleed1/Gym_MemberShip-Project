@@ -4,6 +4,9 @@
  */
 package frontend;
 
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -51,7 +54,12 @@ public class AddClass extends javax.swing.JFrame {
         className = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         trainerID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         trainerID.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.darkGray));
@@ -207,20 +215,29 @@ public class AddClass extends javax.swing.JFrame {
          if (checkEmptyBoxes()) {
             JOptionPane.showMessageDialog(rootPane, "Some fields are empty!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            backend.TrainerRole trainer = trainerRole.trainer;
-            String classIDString  = classID.getText();
-            if (trainer.classDatabase.contains(classIDString)) {
-                JOptionPane.showMessageDialog(rootPane, "The class with ID = " + classID + " already exists!", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                String classNameString = className.getText();
-                String trainerIDString = trainerID.getText();
-                int durationInt = Integer.parseInt(duration.getText());
-                int maxParticipantsInt = Integer.parseInt(maxParticipants.getText());
-                trainer.addClass(classIDString, classNameString, trainerIDString, durationInt, maxParticipantsInt);
-                JOptionPane.showMessageDialog(rootPane, "The class with ID = " + classID + " has successfully added!");
-                dispose();
-                trainerRole.setVisible(true);
-            } 
+             try {
+                 backend.TrainerRole trainer = trainerRole.trainer;
+                 backend.AdminRole admin = new backend.AdminRole();
+                 String classIDString  = classID.getText();
+                 String trainerIDString = trainerID.getText();
+                 if (trainer.classDatabase.contains(classIDString)) {
+                     JOptionPane.showMessageDialog(rootPane, "The class with ID = " + classIDString + " already exists!", "Error", JOptionPane.ERROR_MESSAGE);
+                 }
+                 else if(!admin.database.contains(trainerIDString)){
+                     JOptionPane.showMessageDialog(rootPane, "The Trainer with ID = " + trainerIDString + " does not exist", "Error", JOptionPane.ERROR_MESSAGE);
+                 }
+                 else {
+                     String classNameString = className.getText();
+                     
+                     int durationInt = Integer.parseInt(duration.getText());
+                     int maxParticipantsInt = Integer.parseInt(maxParticipants.getText());
+                     trainer.addClass(classIDString, classNameString, trainerIDString, durationInt, maxParticipantsInt);
+                     JOptionPane.showMessageDialog(rootPane, "The class with ID = " + classIDString + " has successfully added!");
+                     dispose();
+                     trainerRole.setVisible(true); 
+                 }} catch (FileNotFoundException ex) {
+                 Logger.getLogger(AddClass.class.getName()).log(Level.SEVERE, null, ex);
+             }
        }
        
 
@@ -229,10 +246,11 @@ public class AddClass extends javax.swing.JFrame {
     private void classIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_classIDActionPerformed
-    
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {                                  
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         trainerRole.setVisible(true);
-    } 
+    }//GEN-LAST:event_formWindowClosed
+    
     /**
      * @param args the command line arguments
      */

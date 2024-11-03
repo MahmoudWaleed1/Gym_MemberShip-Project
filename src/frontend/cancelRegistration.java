@@ -11,17 +11,21 @@ import javax.swing.JOptionPane;
  * @author Mahmoud Waleed
  */
 public class cancelRegistration extends javax.swing.JFrame {
-     private frontend.TrainerRole trainerRole;
+
+    private frontend.TrainerRole trainerRole;
+
     /**
      * Creates new form cancelRegistration
+     *
+     * @param trainer
      */
-     
-     public cancelRegistration(frontend.TrainerRole trainer) {
+    public cancelRegistration(frontend.TrainerRole trainer) {
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Register member");
+        setTitle("Cancel registeration");
         this.trainerRole = trainer;
-     }
+    }
+
     public cancelRegistration() {
         initComponents();
     }
@@ -35,26 +39,26 @@ public class cancelRegistration extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Register = new javax.swing.JButton();
+        cancelRegister = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         MemberIDInput = new javax.swing.JTextField();
         classIDInput = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
             }
         });
 
-        Register.setBackground(new java.awt.Color(51, 51, 51));
-        Register.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        Register.setForeground(new java.awt.Color(255, 255, 255));
-        Register.setText("Cancel Registration");
-        Register.addActionListener(new java.awt.event.ActionListener() {
+        cancelRegister.setBackground(new java.awt.Color(51, 51, 51));
+        cancelRegister.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        cancelRegister.setForeground(new java.awt.Color(255, 255, 255));
+        cancelRegister.setText("Cancel Registration");
+        cancelRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegisterActionPerformed(evt);
+                cancelRegisterActionPerformed(evt);
             }
         });
 
@@ -91,11 +95,10 @@ public class cancelRegistration extends javax.swing.JFrame {
                     .addComponent(classIDInput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(MemberIDInput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(125, 125, 125)
-                    .addComponent(Register, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(133, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(128, 128, 128)
+                .addComponent(cancelRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,31 +111,39 @@ public class cancelRegistration extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(classIDInput, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(143, 143, 143))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(263, Short.MAX_VALUE)
-                    .addComponent(Register, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(42, 42, 42)))
+                .addGap(48, 48, 48)
+                .addComponent(cancelRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
+    private void cancelRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelRegisterActionPerformed
         if (checkEmptyBoxes()) {
             JOptionPane.showMessageDialog(rootPane, "Some fields are empty!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             backend.TrainerRole trainer = trainerRole.trainer;
             String classIDString = classIDInput.getText();
             String memberIDString = MemberIDInput.getText();
-                trainer.cancelRegistration(memberIDString, classIDString);
-                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " has unregistred from class "+ classIDString);
+            boolean cancelled = trainer.cancelRegistration(memberIDString, classIDString);
+            if (!trainer.classDatabase.contains(classIDString)) {
+                JOptionPane.showMessageDialog(rootPane, "The class with ID = " + classIDString + " does not exist", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (!trainer.memberDatabase.contains(memberIDString)) {
+                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " does not exist", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (!trainer.registrationDatabase.contains(classIDString + '-' + memberIDString)) {
+                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " has not registred to class " + classIDString + " before!", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (!cancelled) {
+                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " has registred to class " + classIDString + " for more than 3 days!", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+
+                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " has unregistred from class " + classIDString);
                 dispose();
                 trainerRole.setVisible(true);
             }
+        }
 
-    }//GEN-LAST:event_RegisterActionPerformed
+    }//GEN-LAST:event_cancelRegisterActionPerformed
     private boolean checkEmptyBoxes() {
         return classIDInput.getText().equals("") || MemberIDInput.getText().equals("");
     }
@@ -147,9 +158,6 @@ public class cancelRegistration extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
-   
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -184,7 +192,7 @@ public class cancelRegistration extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField MemberIDInput;
-    private javax.swing.JButton Register;
+    private javax.swing.JButton cancelRegister;
     private javax.swing.JTextField classIDInput;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
