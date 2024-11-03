@@ -28,7 +28,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="logout" min="-2" pref="167" max="-2" attributes="0"/>
                   <Component id="viewRegistrations" min="-2" pref="167" max="-2" attributes="0"/>
-                  <Component id="classRegistration" min="-2" pref="167" max="-2" attributes="0"/>
+                  <Component id="cancelRegistration" min="-2" pref="167" max="-2" attributes="0"/>
                   <Component id="registerMember" min="-2" pref="167" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                       <Component id="viewClass" alignment="0" max="32767" attributes="0"/>
@@ -55,7 +55,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="registerMember" min="-2" pref="34" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="classRegistration" min="-2" pref="34" max="-2" attributes="0"/>
+              <Component id="cancelRegistration" min="-2" pref="34" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="viewRegistrations" min="-2" pref="34" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -193,7 +193,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerMemberActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="classRegistration">
+    <Component class="javax.swing.JButton" name="cancelRegistration">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="0" type="rgb"/>
@@ -216,7 +216,7 @@
         <Property name="label" type="java.lang.String" value="Cancel Registration"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="classRegistrationActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelRegistrationActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="viewRegistrations">

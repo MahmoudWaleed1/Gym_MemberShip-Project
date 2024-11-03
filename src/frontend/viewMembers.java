@@ -100,7 +100,7 @@ public class viewMembers extends javax.swing.JFrame {
         ArrayList<General> members = trainer.getListOfMembers();
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
-        for (var m : members) {
+        for (General m : members) {
             String[] s = m.lineRepresentation().split(",");
             Object[] row = {s[0], s[1], s[2], s[3], s[4]};
             model.addRow(row);

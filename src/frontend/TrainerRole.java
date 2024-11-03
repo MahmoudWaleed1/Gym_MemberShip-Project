@@ -5,6 +5,7 @@
 package frontend;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -38,7 +39,7 @@ public class TrainerRole extends javax.swing.JFrame {
         addClass = new javax.swing.JButton();
         viewClass = new javax.swing.JButton();
         registerMember = new javax.swing.JButton();
-        classRegistration = new javax.swing.JButton();
+        cancelRegistration = new javax.swing.JButton();
         viewRegistrations = new javax.swing.JButton();
         logout = new javax.swing.JButton();
 
@@ -101,15 +102,15 @@ public class TrainerRole extends javax.swing.JFrame {
             }
         });
 
-        classRegistration.setBackground(new java.awt.Color(0, 0, 0));
-        classRegistration.setForeground(new java.awt.Color(255, 255, 255));
-        classRegistration.setActionCommand("View Classes");
-        classRegistration.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray));
-        classRegistration.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        classRegistration.setLabel("Cancel Registration");
-        classRegistration.addActionListener(new java.awt.event.ActionListener() {
+        cancelRegistration.setBackground(new java.awt.Color(0, 0, 0));
+        cancelRegistration.setForeground(new java.awt.Color(255, 255, 255));
+        cancelRegistration.setActionCommand("View Classes");
+        cancelRegistration.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray, java.awt.Color.lightGray));
+        cancelRegistration.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        cancelRegistration.setLabel("Cancel Registration");
+        cancelRegistration.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                classRegistrationActionPerformed(evt);
+                cancelRegistrationActionPerformed(evt);
             }
         });
 
@@ -146,7 +147,7 @@ public class TrainerRole extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(viewRegistrations, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(classRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(registerMember, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(viewClass, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -169,7 +170,7 @@ public class TrainerRole extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(registerMember, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(classRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cancelRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(viewRegistrations, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -195,37 +196,45 @@ public class TrainerRole extends javax.swing.JFrame {
     }//GEN-LAST:event_viewMembersActionPerformed
 
     private void addClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClassActionPerformed
-        ViewTrainers ad = new ViewTrainers(admin);
-        ad.setVisible(true);
+        dispose();
+        AddClass ac = new AddClass();
+        ac.setVisible(true);
     }//GEN-LAST:event_addClassActionPerformed
 
     private void viewClassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewClassActionPerformed
-        try {
-            admin.logout();
+        dispose();
+        viewClass vc = new viewClass();
+        vc.setVisible(true);
+    }//GEN-LAST:event_viewClassActionPerformed
+
+    private void registerMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerMemberActionPerformed
+       dispose();
+        registerMember rm = new registerMember();
+        rm.setVisible(true);
+    }//GEN-LAST:event_registerMemberActionPerformed
+
+    private void cancelRegistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelRegistrationActionPerformed
+        dispose();
+        cancelRegistration cr = new cancelRegistration();
+        cr.setVisible(true);
+    }//GEN-LAST:event_cancelRegistrationActionPerformed
+
+    private void viewRegistrationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRegistrationsActionPerformed
+        dispose();
+        viewRegistrations vr = new viewRegistrations();
+        vr.setVisible(true);
+    }//GEN-LAST:event_viewRegistrationsActionPerformed
+
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
+           try {
+            trainer.logout();
             dispose();
             Main_page m = new Main_page();
             m.setVisible(true);
         } catch (IOException ex) {
             Logger.getLogger(AdminRole.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_viewClassActionPerformed
-
-    private void registerMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerMemberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_registerMemberActionPerformed
-
-    private void classRegistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classRegistrationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_classRegistrationActionPerformed
-
-    private void viewRegistrationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRegistrationsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_viewRegistrationsActionPerformed
-
-    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_logoutActionPerformed
-
+    }
     /**
      * @param args the command line arguments
      */
@@ -271,7 +280,7 @@ public class TrainerRole extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addClass;
     private javax.swing.JButton addMembers;
-    private javax.swing.JButton classRegistration;
+    private javax.swing.JButton cancelRegistration;
     private javax.swing.JButton logout;
     private javax.swing.JButton registerMember;
     private javax.swing.JButton viewClass;
