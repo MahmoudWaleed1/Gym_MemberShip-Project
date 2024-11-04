@@ -21,13 +21,8 @@ public class MemberDatabase extends Database{
     private String fileName;
 
     public MemberDatabase(String fileName) {
-        super(fileName);
-        
+        super(fileName);      
     }
-
-  
-    
-
     public Member createRecordFrom(String line) {
         String[] lineSeperate = line.split(",");
         String memberID = lineSeperate[0];

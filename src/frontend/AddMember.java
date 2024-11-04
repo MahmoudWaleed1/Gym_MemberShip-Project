@@ -11,18 +11,21 @@ import javax.swing.JOptionPane;
  * @author Mahmoud Waleed
  */
 public class AddMember extends javax.swing.JFrame {
+
     private frontend.TrainerRole trainerRole;
+
     /**
      * Creates new form AddMember
+     *
      * @param trainer
      */
-     public AddMember(frontend.TrainerRole trainer) {
+    public AddMember(frontend.TrainerRole trainer) {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Add member");
         this.trainerRole = trainer;
     }
-     
+
     public AddMember() {
         initComponents();
     }
@@ -230,13 +233,19 @@ public class AddMember extends javax.swing.JFrame {
     }//GEN-LAST:event_memberShipActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-       if (checkEmptyBoxes()) {
+        if (checkEmptyBoxes()) {
             JOptionPane.showMessageDialog(rootPane, "Some fields are empty!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             backend.TrainerRole trainer = trainerRole.trainer;
             String idString = id.getText();
             if (trainer.memberDatabase.contains(idString)) {
                 JOptionPane.showMessageDialog(rootPane, "The member with ID = " + idString + " already exists!", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (phoneNumber.getText().matches("\\d+")) {
+                JOptionPane.showMessageDialog(rootPane, "Invalid phone number. please enter an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (!(status.getText().equalsIgnoreCase("active") || status.getText().equalsIgnoreCase("expired"))) {
+                JOptionPane.showMessageDialog(rootPane, "Invalid status. Active or expired status is only accepted!", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (!(memberShip.getText().equalsIgnoreCase("monthly") || memberShip.getText().equalsIgnoreCase("yearly") || memberShip.getText().equalsIgnoreCase("premium"))) {
+                JOptionPane.showMessageDialog(rootPane, "Invalid membership. monthly , yearly or premium membership is only accepted!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 String nameString = name.getText();
                 String emailString = email.getText();
@@ -247,21 +256,22 @@ public class AddMember extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "The member with ID = " + idString + " has successfully added!");
                 dispose();
                 trainerRole.setVisible(true);
-            } 
-       }
+            }
+        }
     }//GEN-LAST:event_addActionPerformed
 
     private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idActionPerformed
 
-     private boolean checkEmptyBoxes() {
+    private boolean checkEmptyBoxes() {
         return id.getText().equals("") || name.getText().equals("") || email.getText().equals("") || memberShip.getText().equals("") || phoneNumber.getText().equals("") || status.getText().equals("");
     }
-     
-     private void formWindowClosed(java.awt.event.WindowEvent evt) {
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {
         trainerRole.setVisible(true);
-    }  
+    }
+
     /**
      * @param args the command line arguments
      */

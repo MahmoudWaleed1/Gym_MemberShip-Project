@@ -19,16 +19,16 @@ public class AddClass extends javax.swing.JFrame {
 
     /**
      * Creates new form AddClass
+     *
      * @param trainer
      */
-    
     public AddClass(frontend.TrainerRole trainer) {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Add class");
         this.trainerRole = trainer;
     }
-    
+
     public AddClass() {
         initComponents();
     }
@@ -212,34 +212,36 @@ public class AddClass extends javax.swing.JFrame {
     }//GEN-LAST:event_durationActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-         if (checkEmptyBoxes()) {
+        if (checkEmptyBoxes()) {
             JOptionPane.showMessageDialog(rootPane, "Some fields are empty!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-             try {
-                 backend.TrainerRole trainer = trainerRole.trainer;
-                 backend.AdminRole admin = new backend.AdminRole();
-                 String classIDString  = classID.getText();
-                 String trainerIDString = trainerID.getText();
-                 if (trainer.classDatabase.contains(classIDString)) {
-                     JOptionPane.showMessageDialog(rootPane, "The class with ID = " + classIDString + " already exists!", "Error", JOptionPane.ERROR_MESSAGE);
-                 }
-                 else if(!admin.database.contains(trainerIDString)){
-                     JOptionPane.showMessageDialog(rootPane, "The Trainer with ID = " + trainerIDString + " does not exist", "Error", JOptionPane.ERROR_MESSAGE);
-                 }
-                 else {
-                     String classNameString = className.getText();
-                     
-                     int durationInt = Integer.parseInt(duration.getText());
-                     int maxParticipantsInt = Integer.parseInt(maxParticipants.getText());
-                     trainer.addClass(classIDString, classNameString, trainerIDString, durationInt, maxParticipantsInt);
-                     JOptionPane.showMessageDialog(rootPane, "The class with ID = " + classIDString + " has successfully added!");
-                     dispose();
-                     trainerRole.setVisible(true); 
-                 }} catch (FileNotFoundException ex) {
-                 Logger.getLogger(AddClass.class.getName()).log(Level.SEVERE, null, ex);
-             }
-       }
-       
+            try {
+                backend.TrainerRole trainer = trainerRole.trainer;
+                backend.AdminRole admin = new backend.AdminRole();
+                String classIDString = classID.getText();
+                String trainerIDString = trainerID.getText();
+                if (trainer.classDatabase.contains(classIDString)) {
+                    JOptionPane.showMessageDialog(rootPane, "The class with ID = " + classIDString + " already exists!", "Error", JOptionPane.ERROR_MESSAGE);
+                } else if (!admin.database.contains(trainerIDString)) {
+                    JOptionPane.showMessageDialog(rootPane, "The Trainer with ID = " + trainerIDString + " does not exist", "Error", JOptionPane.ERROR_MESSAGE);
+                } else if (duration.getText().matches("\\d+")) {
+                    JOptionPane.showMessageDialog(rootPane, "Invalid duration. please enter an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                } else if (maxParticipants.getText().matches("\\d+")) {
+                    JOptionPane.showMessageDialog(rootPane, "Invalid number of participants. please enter an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    String classNameString = className.getText();
+                    int durationInt = Integer.parseInt(duration.getText());
+                    int maxParticipantsInt = Integer.parseInt(maxParticipants.getText());
+                    trainer.addClass(classIDString, classNameString, trainerIDString, durationInt, maxParticipantsInt);
+                    JOptionPane.showMessageDialog(rootPane, "The class with ID = " + classIDString + " has successfully added!");
+                    dispose();
+                    trainerRole.setVisible(true);
+                }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(AddClass.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
 
     }//GEN-LAST:event_addActionPerformed
 
@@ -250,13 +252,14 @@ public class AddClass extends javax.swing.JFrame {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         trainerRole.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
-    
+
     /**
      * @param args the command line arguments
      */
-        private boolean checkEmptyBoxes() {
-        return classID.getText().equals("") || className.getText().equals("") || trainerID.getText().equals("") || duration.getText().equals("") || maxParticipants.getText().equals("") ;
+    private boolean checkEmptyBoxes() {
+        return classID.getText().equals("") || className.getText().equals("") || trainerID.getText().equals("") || duration.getText().equals("") || maxParticipants.getText().equals("");
     }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

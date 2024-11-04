@@ -5,6 +5,9 @@
         <group>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Gym/src/frontend/Trainer_login.java</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Gym/src/frontend/cancelRegistration.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Gym/src/backend/Member.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Gym/src/backend/MemberDatabase.java</file>
+            <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Gym/src/frontend/AddMember.java</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Gym/src/frontend/registerMember.java</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Gym/src/backend/TrainerRole.java</file>
             <file>file:/C:/Users/DELL/Documents/NetBeansProjects/Gym/src/frontend/AdminRole.java</file>
