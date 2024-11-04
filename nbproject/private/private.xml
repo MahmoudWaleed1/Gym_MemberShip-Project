@@ -12,6 +12,7 @@
             <file>file:/C:/programming%202/Gym_GUI/GymGui/src/backend/General.java</file>
             <file>file:/C:/programming%202/Gym_GUI/GymGui/src/frontend/AddTrainer.java</file>
             <file>file:/C:/programming%202/Gym_GUI/GymGui/src/frontend/AddClass.java</file>
+            <file>file:/C:/programming%202/Gym_GUI/GymGui/src/backend/Trainer.java</file>
             <file>file:/C:/programming%202/Gym_GUI/GymGui/src/frontend/RemoveTrainer.java</file>
             <file>file:/C:/programming%202/Gym_GUI/GymGui/src/frontend/viewClass.java</file>
             <file>file:/C:/programming%202/Gym_GUI/GymGui/src/backend/Database.java</file>
@@ -21,6 +22,7 @@
             <file>file:/C:/programming%202/Gym_GUI/GymGui/src/backend/Member.java</file>
             <file>file:/C:/programming%202/Gym_GUI/GymGui/src/frontend/viewRegistrations.java</file>
             <file>file:/C:/programming%202/Gym_GUI/GymGui/src/backend/MemberClassRegistration.java</file>
+            <file>file:/C:/programming%202/Gym_GUI/GymGui/src/backend/TrainerDatabase.java</file>
             <file>file:/C:/programming%202/Gym_GUI/GymGui/src/constants/FileNames.java</file>
             <file>file:/C:/programming%202/Gym_GUI/GymGui/src/frontend/AddMember.java</file>
             <file>file:/C:/programming%202/Gym_GUI/GymGui/src/frontend/TrainerRole.java</file>

@@ -4,7 +4,11 @@
  */
 package frontend;
 
+import backend.General;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -97,6 +101,8 @@ public class registerMember extends javax.swing.JFrame {
             }
         });
 
+        dateInput.setDateFormatString("yyyy-MM-dd");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -163,23 +169,43 @@ public class registerMember extends javax.swing.JFrame {
             backend.TrainerRole trainer = trainerRole.trainer;
             String classIDString = classIDInput.getText();
             String memberIDString = MemberIDInput.getText();
-            if (!trainer.classDatabase.contains(classIDString)) {
+            Date date = dateInput.getDate();
+            LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+             ArrayList<General> members=trainer.getListOfMembers();
+                boolean flagMember = false;
+                for(General m: members){
+                    if(memberIDString.equals(m.getSearchKey())){
+                        flagMember = true;
+                    }
+                }
+            int noSeats = 0;
+            ArrayList<General> classes=trainer.getListOfClasses();
+                boolean flagClass = false;
+                for(General c: classes){
+                    if(classIDString.equals(c.getSearchKey()))
+                    {
+                        noSeats = c.getAvailableSeats();
+                        flagClass = true;
+                    }
+                }
+            if (!flagClass) {
                 JOptionPane.showMessageDialog(rootPane, "The class with ID = " + classIDString + " does not exist", "Error", JOptionPane.ERROR_MESSAGE);
-            } else if (!trainer.memberDatabase.contains(memberIDString)) {
-                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " does not exist", "Error", JOptionPane.ERROR_MESSAGE);
-            } else if (trainer.classDatabase.getRecord(classIDString).getAvailableSeats() < 0) {
+            } else if (!flagMember) {
+                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " does not exist", "Error", JOptionPane.ERROR_MESSAGE);}
+          
+            if (noSeats <0) {
                 JOptionPane.showMessageDialog(rootPane, "No available seats!", "Error", JOptionPane.ERROR_MESSAGE);
-            } else if (trainer.registrationDatabase.contains(classIDString + '-' + memberIDString)) {
-                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " has already registred to class " + classIDString + "!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                String date = dateInput.getDateFormatString();
-                trainer.registerMemberForClass(memberIDString, classIDString, LocalDate.parse(date));
-                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " has successfully registred to class " + classIDString);
+      
+                trainer.registerMemberForClass(memberIDString, classIDString, localDate);
+                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " has successfully registred to class "+ classIDString);
                 dispose();
                 trainerRole.setVisible(true);
-            }
+            } 
         }
+        
 
+                              
     }//GEN-LAST:event_RegisterActionPerformed
     
 
@@ -188,7 +214,9 @@ public class registerMember extends javax.swing.JFrame {
     }//GEN-LAST:event_classIDInputActionPerformed
 
     private void currentDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentDateActionPerformed
-        // TODO add your handling code here:
+    LocalDate nowDate = LocalDate.now(); 
+    Date date = Date.from(nowDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+    dateInput.setDate(date);
     }//GEN-LAST:event_currentDateActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed

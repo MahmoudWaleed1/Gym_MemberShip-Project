@@ -220,20 +220,20 @@ public class AddTrainer extends javax.swing.JFrame {
         } else {
             backend.AdminRole admin = adminRole.admin;
             String idString = id.getText();
-            if (admin.database.contains(idString)) {
-                JOptionPane.showMessageDialog(rootPane, "The trainer with ID = " + idString + " already exists!", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                String nameString = name.getText();
-                String emailString = email.getText();
-                String specialityString = speciality.getText();
-                String phoneString = phoneNumber.getText();
-                admin.addTrainer(idString, nameString, emailString, specialityString, phoneString);
+            String nameString = name.getText();
+            String emailString = email.getText();
+            String specialityString = speciality.getText();
+            String phoneString = phoneNumber.getText();
+            if (admin.addTrainer(idString, nameString, emailString, specialityString, phoneString)) {
                 JOptionPane.showMessageDialog(rootPane, "The trainer with ID = " + idString + " has successfully added!");
                 dispose();
                 adminRole.setVisible(true);
-            } 
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "The trainer with ID = " + idString + " already exists!", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
         }
-        
+
     }//GEN-LAST:event_addActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -242,6 +242,7 @@ public class AddTrainer extends javax.swing.JFrame {
     private boolean checkEmptyBoxes() {
         return id.getText().equals("") || jLabel2.getText().equals("") || email.getText().equals("") || speciality.getText().equals("") || phoneNumber.getText().equals("");
     }
+
     /**
      * @param args the command line arguments
      */

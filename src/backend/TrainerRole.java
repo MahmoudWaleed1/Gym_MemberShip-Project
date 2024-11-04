@@ -15,9 +15,9 @@ import java.util.ArrayList;
  */
 public class TrainerRole {
 
-   public MemberDatabase memberDatabase;
-    public ClassDatabase classDatabase;
-    public MemberClassRegistrationDatabase registrationDatabase;
+    private MemberDatabase memberDatabase;
+    private ClassDatabase classDatabase;
+    private MemberClassRegistrationDatabase registrationDatabase;
 
     public TrainerRole() throws FileNotFoundException {
         memberDatabase = new MemberDatabase(constants.FileNames.MEMBER_FILENAME);
@@ -28,18 +28,18 @@ public class TrainerRole {
         registrationDatabase.readFromFile();
     }
 
-    public void addMember(String memberID, String name, String membershipType, String email, String phoneNumber, String status) {
+    public boolean addMember(String memberID, String name, String membershipType, String email, String phoneNumber, String status) {
         Member m = new Member(memberID, name, membershipType, email, phoneNumber, status);
-        memberDatabase.insertRecord(m);
+        return memberDatabase.insertRecord(m);
     }
 
     public ArrayList<General> getListOfMembers() {
         return memberDatabase.returnAllRecords();
     }
 
-    public void addClass(String classID, String className, String trainerID, int duration, int maxParticipants) {
+    public boolean addClass(String classID, String className, String trainerID, int duration, int maxParticipants) {
         Class c = new Class(classID, className, trainerID, duration, maxParticipants);
-        classDatabase.insertRecord(c);
+        return classDatabase.insertRecord(c);
     }
 
     public ArrayList<General> getListOfClasses() {
@@ -47,10 +47,10 @@ public class TrainerRole {
     }
 
     public boolean registerMemberForClass(String memberID, String classID, LocalDate registrationDate) {
-        if(!classDatabase.contains(classID)){
+        if (!classDatabase.contains(classID)) {
             return false;
         }
-        Class c = (Class)classDatabase.getRecord(classID);
+        Class c = (Class) classDatabase.getRecord(classID);
         int maxParticipants = c.getAvailableSeats();
         if (maxParticipants > 0 && memberDatabase.contains(memberID)) {
             MemberClassRegistration m = new MemberClassRegistration(memberID, classID, "active", registrationDate);
@@ -63,7 +63,7 @@ public class TrainerRole {
     }
 
     public boolean cancelRegistration(String memberID, String classID) {
-        MemberClassRegistration m = (MemberClassRegistration)registrationDatabase.getRecord(memberID + "-" + classID);
+        MemberClassRegistration m = (MemberClassRegistration) registrationDatabase.getRecord(memberID + "-" + classID);
         if (m == null) {
             return false;
         }
@@ -72,9 +72,9 @@ public class TrainerRole {
         if (date.plusDays(3).isBefore(currentDate)) {
             return false;
         }
-        Class c = (Class)classDatabase.getRecord(classID);
+        Class c = (Class) classDatabase.getRecord(classID);
         c.setAvailableSeats(c.getAvailableSeats() + 1);
-        m.setRegistrationStatus("canceled");
+        m.setRegistrationStatus("cancelled");
         return true;
     }
 
@@ -87,6 +87,5 @@ public class TrainerRole {
         classDatabase.saveToFile();
         registrationDatabase.saveToFile();
     }
-    
-    
+
 }

@@ -106,7 +106,7 @@ public class viewRegistrations extends javax.swing.JFrame {
         model.setRowCount(0);
         for (General r : registrations) {
             String[] s = r.lineRepresentation().split(",");
-            Object[] row = {s[0], s[1], s[2], s[3], s[4]};
+            Object[] row = {s[0], s[1], s[2]};
             model.addRow(row);
         }
     }

@@ -71,9 +71,13 @@ abstract public class Database {
         }
     }
     
-     public void deleteRecord(String key) {
+     public boolean deleteRecord(String key) {
         General c = getRecord(key);
+        if(c!= null){
         records.remove(c);
+        return true;}
+        else
+        return false;
     }
      
     public void saveToFile() throws IOException {

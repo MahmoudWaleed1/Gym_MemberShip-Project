@@ -4,7 +4,9 @@
  */
 package frontend;
 
+import backend.Trainer;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -212,37 +214,47 @@ public class AddClass extends javax.swing.JFrame {
     }//GEN-LAST:event_durationActionPerformed
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
-        if (checkEmptyBoxes()) {
-            JOptionPane.showMessageDialog(rootPane, "Some fields are empty!", "Error", JOptionPane.ERROR_MESSAGE);
+           
+    if (checkEmptyBoxes()) {
+        JOptionPane.showMessageDialog(rootPane, "Some fields are empty!", "Error", JOptionPane.ERROR_MESSAGE);
+    } else {
+        if (!duration.getText().matches("\\d+")) {
+            JOptionPane.showMessageDialog(rootPane, "Invalid duration. Please enter an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (!maxParticipants.getText().matches("\\d+")) {
+            JOptionPane.showMessageDialog(rootPane, "Invalid number of participants. Please enter an integer!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             try {
                 backend.TrainerRole trainer = trainerRole.trainer;
                 backend.AdminRole admin = new backend.AdminRole();
                 String classIDString = classID.getText();
                 String trainerIDString = trainerID.getText();
-                if (trainer.classDatabase.contains(classIDString)) {
-                    JOptionPane.showMessageDialog(rootPane, "The class with ID = " + classIDString + " already exists!", "Error", JOptionPane.ERROR_MESSAGE);
-                } else if (!admin.database.contains(trainerIDString)) {
+                String classNameString = className.getText();
+                int durationInt = Integer.parseInt(duration.getText());
+                int maxParticipantsInt = Integer.parseInt(maxParticipants.getText());
+                
+                ArrayList<Trainer> trainers = admin.getListOfTrainers();
+                boolean flag = false;
+                for (Trainer t : trainers) {
+                    if (trainerIDString.equals(t.getSearchKey())) {
+                        flag = true;
+                    }
+                }
+
+                if (!flag) {
                     JOptionPane.showMessageDialog(rootPane, "The Trainer with ID = " + trainerIDString + " does not exist", "Error", JOptionPane.ERROR_MESSAGE);
-                } else if (duration.getText().matches("\\d+")) {
-                    JOptionPane.showMessageDialog(rootPane, "Invalid duration. please enter an integer!", "Error", JOptionPane.ERROR_MESSAGE);
-                } else if (maxParticipants.getText().matches("\\d+")) {
-                    JOptionPane.showMessageDialog(rootPane, "Invalid number of participants. please enter an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+                } else if (!trainer.addClass(classIDString, classNameString, trainerIDString, durationInt, maxParticipantsInt)) {
+                    JOptionPane.showMessageDialog(rootPane, "The class with ID = " + classIDString + " already exists!", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    String classNameString = className.getText();
-                    int durationInt = Integer.parseInt(duration.getText());
-                    int maxParticipantsInt = Integer.parseInt(maxParticipants.getText());
-                    trainer.addClass(classIDString, classNameString, trainerIDString, durationInt, maxParticipantsInt);
-                    JOptionPane.showMessageDialog(rootPane, "The class with ID = " + classIDString + " has successfully added!");
+                    JOptionPane.showMessageDialog(rootPane, "The class with ID = " + classIDString + " has been successfully added!");
                     dispose();
                     trainerRole.setVisible(true);
                 }
+                
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(AddClass.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
-
+    }
     }//GEN-LAST:event_addActionPerformed
 
     private void classIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classIDActionPerformed

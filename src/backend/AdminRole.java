@@ -14,24 +14,24 @@ import java.util.ArrayList;
  * @author DELL
  */
 public class AdminRole {
-    public TrainerDatabase database;
+    private TrainerDatabase database;
 
     public AdminRole() throws FileNotFoundException {
         database = new TrainerDatabase(constants.FileNames.TRAINER_FILENAME);
         database.readFromFile();
     }
     
-    public void addTrainer(String trainerId, String name, String email, String speciality, String phoneNumber){
+    public boolean addTrainer(String trainerId, String name, String email, String speciality, String phoneNumber){
         Trainer record = new Trainer(trainerId, name, email, speciality, phoneNumber);
-        database.insertRecord((General)record);
+        return database.insertRecord((General)record);
     }
     
     public ArrayList getListOfTrainers(){
         return database.returnAllRecords();
     }
     
-    public void removeTrainer(String key){
-        database.deleteRecord(key);
+    public boolean removeTrainer(String key){
+        return database.deleteRecord(key);
     }
     
     public void logout() throws IOException{

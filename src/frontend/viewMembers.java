@@ -110,7 +110,7 @@ public class viewMembers extends javax.swing.JFrame {
         model.setRowCount(0);
         for (General m : members) {
             String[] s = m.lineRepresentation().split(",");
-            Object[] row = {s[0], s[1], s[2], s[3], s[4]};
+            Object[] row = {s[0], s[1], s[2], s[3], s[4], s[5]};
             model.addRow(row);
         }
     }

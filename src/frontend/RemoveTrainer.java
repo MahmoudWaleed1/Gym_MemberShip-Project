@@ -111,9 +111,7 @@ public class RemoveTrainer extends javax.swing.JFrame {
         backend.AdminRole admin = adminRole.admin;
         if (id.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "ID is empty. Enter a valid ID!", "Error", JOptionPane.ERROR_MESSAGE);
-        } else if (admin.database.contains(id.getText())) {
-
-            admin.removeTrainer(id.getText());
+        } else if (admin.removeTrainer(id.getText())) {
             JOptionPane.showMessageDialog(rootPane, "The trainer with ID = " + id.getText() + " has been deleted");
             dispose();
             adminRole.setVisible(true);
