@@ -17,7 +17,7 @@ public class TrainerRole {
 
     private MemberDatabase memberDatabase;
     private ClassDatabase classDatabase;
-    private MemberClassRegistrationDatabase registrationDatabase;
+    public MemberClassRegistrationDatabase registrationDatabase;
 
     public TrainerRole() throws FileNotFoundException {
         memberDatabase = new MemberDatabase(constants.FileNames.MEMBER_FILENAME);

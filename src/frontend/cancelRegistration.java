@@ -151,12 +151,13 @@ public class cancelRegistration extends javax.swing.JFrame {
             boolean cancelled = trainer.cancelRegistration(memberIDString, classIDString);
             if (cancelled) {
                 JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " has unregistred from class " + classIDString);
+                trainer.registrationDatabase.deleteRecord(memberIDString+"-"+classIDString);
                 dispose();
                 trainerRole.setVisible(true);
                 
             } else {
 
-                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " has never registred to class " + classIDString + " OR registered for more than 3 days!", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " is not registred to class " + classIDString + " OR registered for more than 3 days!", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
 
