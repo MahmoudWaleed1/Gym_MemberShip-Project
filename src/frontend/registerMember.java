@@ -195,8 +195,9 @@ public class registerMember extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " does not exist", "Error", JOptionPane.ERROR_MESSAGE);
             } else if (noSeats == 0) {
                 JOptionPane.showMessageDialog(rootPane, "No available seats!", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (!trainer.registerMemberForClass(memberIDString, classIDString, localDate)) {
+                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " already registered to the class with ID = " + classIDString,  "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                trainer.registerMemberForClass(memberIDString, classIDString, localDate);
                 JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " has successfully registred to class " + classIDString);
                 dispose();
                 trainerRole.setVisible(true);
