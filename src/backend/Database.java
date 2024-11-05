@@ -8,7 +8,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,14 +16,15 @@ import java.util.Scanner;
  * @author Mahmoud Waleed
  */
 abstract public class Database {
+
     private ArrayList<General> records;
     private String fileName;
 
-    public Database(String fileName){
+    public Database(String fileName) {
         this.fileName = fileName;
         records = new ArrayList<>();
-    }    
-    
+    }
+
     public void readFromFile() throws FileNotFoundException {
         File file = new File(fileName);
         Scanner scan = new Scanner(file);
@@ -36,13 +36,13 @@ abstract public class Database {
             }
         }
     }
-    
-   abstract public General createRecordFrom(String line); 
-  
+
+    abstract public General createRecordFrom(String line);
+
     public ArrayList<General> returnAllRecords() {
         return records;
     }
-    
+
     public boolean contains(String key) {
         for (General g : records) {
             if (g.getSearchKey().equals(key)) {
@@ -51,7 +51,7 @@ abstract public class Database {
         }
         return false;
     }
-    
+
     public General getRecord(String key) {
         for (General g : records) {
             if (g.getSearchKey().equals(key)) {
@@ -60,7 +60,7 @@ abstract public class Database {
         }
         return null;
     }
-    
+
     public boolean insertRecord(General record) {
         if (contains(record.getSearchKey())) {
             System.out.println("Id already exists.");
@@ -70,21 +70,22 @@ abstract public class Database {
             return true;
         }
     }
-    
-     public boolean deleteRecord(String key) {
+
+    public boolean deleteRecord(String key) {
         General c = getRecord(key);
-        if(c!= null){
-        records.remove(c);
-        return true;}
-        else
-        return false;
+        if (c != null) {
+            records.remove(c);
+            return true;
+        } else {
+            return false;
+        }
     }
-     
+
     public void saveToFile() throws IOException {
         FileWriter writer = new FileWriter(fileName);
         for (General g : records) {
             writer.write(g.lineRepresentation());
         }
-         writer.flush();
-}
+        writer.flush();
+    }
 }

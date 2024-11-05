@@ -36,10 +36,12 @@ public class MemberClassRegistration implements General{
         return registrationDate;
     }
 
+    @Override
     public String getSearchKey() {
         return memberID + "-" + classID;
     }
 
+    @Override
     public String lineRepresentation() {
         return memberID + "," + classID + "," + registrationDate + "," + status + "\n";
     }
@@ -47,6 +49,7 @@ public class MemberClassRegistration implements General{
     public void setRegistrationStatus(String status) {
         this.status = status;
     }
+    @Override
      public int getAvailableSeats(){
         System.out.println("not used here");
         return 0;

@@ -224,7 +224,9 @@ public class AddTrainer extends javax.swing.JFrame {
             String emailString = email.getText();
             String specialityString = speciality.getText();
             String phoneString = phoneNumber.getText();
-            if (admin.addTrainer(idString, nameString, emailString, specialityString, phoneString)) {
+            if (!phoneNumber.getText().matches("\\d+")) {
+                JOptionPane.showMessageDialog(rootPane, "Invalid phone number. please enter an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (admin.addTrainer(idString, nameString, emailString, specialityString, phoneString)) {
                 JOptionPane.showMessageDialog(rootPane, "The trainer with ID = " + idString + " has successfully added!");
                 dispose();
                 adminRole.setVisible(true);
@@ -271,11 +273,8 @@ public class AddTrainer extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new AddTrainer().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new AddTrainer().setVisible(true);
         });
     }
 

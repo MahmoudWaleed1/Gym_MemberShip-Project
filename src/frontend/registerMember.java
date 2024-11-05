@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author Mahmoud Waleed
  */
 public class registerMember extends javax.swing.JFrame {
-    
+
     private frontend.TrainerRole trainerRole;
 
     /**
@@ -30,7 +30,7 @@ public class registerMember extends javax.swing.JFrame {
         setTitle("Register member");
         this.trainerRole = trainer;
     }
-    
+
     public registerMember() {
         initComponents();
     }
@@ -171,52 +171,48 @@ public class registerMember extends javax.swing.JFrame {
             String memberIDString = MemberIDInput.getText();
             Date date = dateInput.getDate();
             LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-             ArrayList<General> members=trainer.getListOfMembers();
-                boolean flagMember = false;
-                for(General m: members){
-                    if(memberIDString.equals(m.getSearchKey())){
-                        flagMember = true;
-                    }
+            ArrayList<General> members = trainer.getListOfMembers();
+            boolean flagMember = false;
+            for (General m : members) {
+                if (memberIDString.equals(m.getSearchKey())) {
+                    flagMember = true;
+                    break;
                 }
+            }
             int noSeats = 0;
-            ArrayList<General> classes=trainer.getListOfClasses();
-                boolean flagClass = false;
-                for(General c: classes){
-                    if(classIDString.equals(c.getSearchKey()))
-                    {
-                        noSeats = c.getAvailableSeats();
-                        flagClass = true;
-                    }
+            ArrayList<General> classes = trainer.getListOfClasses();
+            boolean flagClass = false;
+            for (General c : classes) {
+                if (classIDString.equals(c.getSearchKey())) {
+                    noSeats = c.getAvailableSeats();
+                    flagClass = true;
+                    break;
                 }
+            }
             if (!flagClass) {
                 JOptionPane.showMessageDialog(rootPane, "The class with ID = " + classIDString + " does not exist", "Error", JOptionPane.ERROR_MESSAGE);
             } else if (!flagMember) {
-                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " does not exist", "Error", JOptionPane.ERROR_MESSAGE);}
-          
-            if (noSeats <0) {
+                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " does not exist", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (noSeats == 0) {
                 JOptionPane.showMessageDialog(rootPane, "No available seats!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-      
                 trainer.registerMemberForClass(memberIDString, classIDString, localDate);
-                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " has successfully registred to class "+ classIDString);
+                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " has successfully registred to class " + classIDString);
                 dispose();
                 trainerRole.setVisible(true);
-            } 
+            }
         }
-        
-
-                              
     }//GEN-LAST:event_RegisterActionPerformed
-    
+
 
     private void classIDInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classIDInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_classIDInputActionPerformed
 
     private void currentDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentDateActionPerformed
-    LocalDate nowDate = LocalDate.now(); 
-    Date date = Date.from(nowDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-    dateInput.setDate(date);
+        LocalDate nowDate = LocalDate.now();
+        Date date = Date.from(nowDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        dateInput.setDate(date);
     }//GEN-LAST:event_currentDateActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -229,7 +225,7 @@ public class registerMember extends javax.swing.JFrame {
     private boolean checkEmptyBoxes() {
         return classIDInput.getText().equals("") || MemberIDInput.getText().equals("") || dateInput.getDateFormatString().equals("");
     }
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

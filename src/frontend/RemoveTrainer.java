@@ -20,7 +20,6 @@ public class RemoveTrainer extends javax.swing.JFrame {
      * @param admin
      */
      public RemoveTrainer(frontend.AdminRole admin) {
-
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Remove trainer");
@@ -119,7 +118,6 @@ public class RemoveTrainer extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(rootPane, "The trainer with ID = " + id.getText() + " does not exist!", "Error", JOptionPane.ERROR_MESSAGE);
         }
-
     }//GEN-LAST:event_removeActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed

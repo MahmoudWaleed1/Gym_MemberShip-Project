@@ -219,9 +219,9 @@ public class AddClass extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(rootPane, "Some fields are empty!", "Error", JOptionPane.ERROR_MESSAGE);
     } else {
         if (!duration.getText().matches("\\d+")) {
-            JOptionPane.showMessageDialog(rootPane, "Invalid duration. Please enter an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Invalid duration. Please enter a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
         } else if (!maxParticipants.getText().matches("\\d+")) {
-            JOptionPane.showMessageDialog(rootPane, "Invalid number of participants. Please enter an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Invalid number of participants. Please enter a positive integer!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             try {
                 backend.TrainerRole trainer = trainerRole.trainer;

@@ -3,14 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package frontend;
+
 /**
  *
- * @author Mahmoud Waleed
+ * @author Mahmoud Waleed && Ahmed Alaa
  */
 public class Main_page extends javax.swing.JFrame {
 
     public Main_page() {
         initComponents();
+
         setLocationRelativeTo(null);
         setTitle("Main page");
     }
@@ -25,22 +27,10 @@ public class Main_page extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        popupMenu1 = new java.awt.PopupMenu();
         adminButton = new javax.swing.JButton();
         trainerButton = new javax.swing.JButton();
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        popupMenu1.setLabel("popupMenu1");
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gym System");
         setBackground(new java.awt.Color(0, 204, 204));
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -88,7 +78,6 @@ public class Main_page extends javax.swing.JFrame {
         dispose();
         Trainer_login ad = new Trainer_login();
         ad.setVisible(true);
-       
     }//GEN-LAST:event_trainerButtonActionPerformed
 
     private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
@@ -135,10 +124,6 @@ public class Main_page extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adminButton;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private java.awt.PopupMenu popupMenu1;
     private javax.swing.JButton trainerButton;
     // End of variables declaration//GEN-END:variables
 }

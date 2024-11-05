@@ -10,7 +10,6 @@ import javax.swing.JOptionPane;
  *
  * @author Mahmoud Waleed
  */
-
 public class AddMember extends javax.swing.JFrame {
 
     private frontend.TrainerRole trainerRole;
@@ -245,23 +244,20 @@ public class AddMember extends javax.swing.JFrame {
             String phoneString = phoneNumber.getText();
             String statusString = status.getText();
             if (!phoneNumber.getText().matches("\\d+")) {
-                JOptionPane.showMessageDialog(rootPane, "Invalid phone number. please enter an integer!", "Error", JOptionPane.ERROR_MESSAGE);}
-            
-            else if (!(status.getText().equalsIgnoreCase("active") || status.getText().equalsIgnoreCase("expired"))) {
-                JOptionPane.showMessageDialog(rootPane, "Invalid status. Active or expired status is only accepted!", "Error", JOptionPane.ERROR_MESSAGE);}
-            
-            else if (!(memberShip.getText().equalsIgnoreCase("monthly") || memberShip.getText().equalsIgnoreCase("yearly") || memberShip.getText().equalsIgnoreCase("premium"))) {
-                JOptionPane.showMessageDialog(rootPane, "Invalid membership. monthly , yearly or premium membership is only accepted!", "Error", JOptionPane.ERROR_MESSAGE);}
-            
-            else {if (trainer.addMember(idString, nameString, memberShipType, emailString, phoneString, statusString)) {
-                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + idString + " has successfully added!");
-                dispose();
-                trainerRole.setVisible(true);
+                JOptionPane.showMessageDialog(rootPane, "Invalid phone number. please enter an integer!", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (!(status.getText().equalsIgnoreCase("active") || status.getText().equalsIgnoreCase("expired"))) {
+                JOptionPane.showMessageDialog(rootPane, "Invalid status. Active or expired status is only accepted!", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (!(memberShip.getText().equalsIgnoreCase("monthly") || memberShip.getText().equalsIgnoreCase("yearly") || memberShip.getText().equalsIgnoreCase("premium"))) {
+                JOptionPane.showMessageDialog(rootPane, "Invalid membership. monthly , yearly or premium membership is only accepted!", "Error", JOptionPane.ERROR_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + idString + " already exists!", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        
-          
+                if (trainer.addMember(idString, nameString, memberShipType, emailString, phoneString, statusString)) {
+                    JOptionPane.showMessageDialog(rootPane, "The member with ID = " + idString + " has successfully added!");
+                    dispose();
+                    trainerRole.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "The member with ID = " + idString + " already exists!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
             }
         }
     }//GEN-LAST:event_addActionPerformed
@@ -271,47 +267,47 @@ public class AddMember extends javax.swing.JFrame {
     }//GEN-LAST:event_idActionPerformed
 
     private boolean checkEmptyBoxes() {
-    return id.getText().equals("") || name.getText().equals("") || email.getText().equals("") || memberShip.getText().equals("") || phoneNumber.getText().equals("") || status.getText().equals("");
-}
+        return id.getText().equals("") || name.getText().equals("") || email.getText().equals("") || memberShip.getText().equals("") || phoneNumber.getText().equals("") || status.getText().equals("");
+    }
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {
-    trainerRole.setVisible(true);
-}
+        trainerRole.setVisible(true);
+    }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-    /* Set the Nimbus look and feel */
-    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-     */
-    try {
-        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-            if ("Nimbus".equals(info.getName())) {
-                javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                break;
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
             }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(AddMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(AddMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(AddMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(AddMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-    } catch (ClassNotFoundException ex) {
-        java.util.logging.Logger.getLogger(AddMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (InstantiationException ex) {
-        java.util.logging.Logger.getLogger(AddMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (IllegalAccessException ex) {
-        java.util.logging.Logger.getLogger(AddMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-        java.util.logging.Logger.getLogger(AddMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    }
-    //</editor-fold>
+        //</editor-fold>
 
-    /* Create and display the form */
-    java.awt.EventQueue.invokeLater(new Runnable() {
-        public void run() {
-            new AddMember().setVisible(true);
-        }
-    });
-}
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new AddMember().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;

@@ -128,35 +128,31 @@ public class cancelRegistration extends javax.swing.JFrame {
             backend.TrainerRole trainer = trainerRole.trainer;
             String classIDString = classIDInput.getText();
             String memberIDString = MemberIDInput.getText();
-            ArrayList<General> members=trainer.getListOfMembers();
-                boolean flagMember = false;
-                for(General m: members){
-                    if(memberIDString.equals(m.getSearchKey())){
-                        flagMember = true;
-                    }
+            boolean cancelled = trainer.cancelRegistration(memberIDString, classIDString);
+            ArrayList<General> members = trainer.getListOfMembers();
+            boolean flagMember = false;
+            for (General m : members) {
+                if (memberIDString.equals(m.getSearchKey())) {
+                    flagMember = true;
                 }
-            ArrayList<General> classes=trainer.getListOfClasses();
-                boolean flagClass = false;
-                for(General c: classes){
-                    if(classIDString.equals(c.getSearchKey())){
-                        flagClass = true;
-                    }
+            }
+            ArrayList<General> classes = trainer.getListOfClasses();
+            boolean flagClass = false;
+            for (General c : classes) {
+                if (classIDString.equals(c.getSearchKey())) {
+                    flagClass = true;
                 }
+            }
             if (!flagClass) {
                 JOptionPane.showMessageDialog(rootPane, "The class with ID = " + classIDString + " does not exist", "Error", JOptionPane.ERROR_MESSAGE);
             } else if (!flagMember) {
                 JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " does not exist", "Error", JOptionPane.ERROR_MESSAGE);
-          
-            }
-            boolean cancelled = trainer.cancelRegistration(memberIDString, classIDString);
-            if (cancelled) {
+            } else if (!cancelled) { 
+                 JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " has not registred to class " + classIDString + " before or registered for more than 3 days!", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
                 JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " has unregistred from class " + classIDString);
                 dispose();
                 trainerRole.setVisible(true);
-                
-            } else {
-
-                JOptionPane.showMessageDialog(rootPane, "The member with ID = " + memberIDString + " has never registred to class " + classIDString + " OR registered for more than 3 days!", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
 

@@ -75,7 +75,8 @@ public class TrainerRole {
         Class c = (Class) classDatabase.getRecord(classID);
         c.setAvailableSeats(c.getAvailableSeats() + 1);
         m.setRegistrationStatus("cancelled");
-        return true;
+        boolean cancelled = registrationDatabase.deleteRecord(memberID + "-" + classID);
+        return cancelled;
     }
 
     public ArrayList<General> getListOfRegistrations() {

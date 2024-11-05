@@ -8,6 +8,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -24,9 +26,16 @@ public class AdminRole extends javax.swing.JFrame {
      */
     public AdminRole() throws FileNotFoundException {
         this.admin = new backend.AdminRole();
-        initComponents();
+        ImageIcon backgroundImage = new ImageIcon("\"C:\\Users\\DELL\\Downloads\\premium_photo-1664301427534-28b6a53a9c4f.avif\"");
+         JLabel backgroundLabel = new JLabel(backgroundImage);
+         setContentPane(backgroundLabel);
+         
+        
         setTitle("Admin Role");
         setLocationRelativeTo(null);
+        setSize(backgroundImage.getIconWidth(), backgroundImage.getIconHeight());
+        setVisible(true);
+         
     }
 
     /**
@@ -188,7 +197,7 @@ public class AdminRole extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-     
+
         //</editor-fold>
 
         /* Create and display the form */
